@@ -79,8 +79,7 @@ bool SearchWidget::eventFilter(QObject *obj, QEvent *event)
             // If Down is pressed at EOL in the search edit, move
             // the focus to the entry view.
             QLineEdit* searchEdit = m_ui->searchEdit;
-            if (!searchEdit->hasSelectedText() &&
-                searchEdit->cursorPosition() == searchEdit->text().length()) {
+            if (searchEdit->cursorPosition() == searchEdit->text().length()) {
                 emit downPressed();
                 return true;
             }
