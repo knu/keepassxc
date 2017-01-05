@@ -45,6 +45,7 @@ protected:
 signals:
     void search(const QString &text);
     void caseSensitiveChanged(bool state);
+    void enterPressed();
     void escapePressed();
     void copyPressed();
     void downPressed();

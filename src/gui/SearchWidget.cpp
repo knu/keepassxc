@@ -84,6 +84,10 @@ bool SearchWidget::eventFilter(QObject *obj, QEvent *event)
                 return true;
             }
         }
+        else if (keyEvent->matches(QKeySequence::InsertParagraphSeparator)) {
+            emit enterPressed();
+            return true;
+        }
     }
 
     return QObject::eventFilter(obj, event);
@@ -93,6 +97,7 @@ void SearchWidget::connectSignals(SignalMultiplexer& mx)
 {
     mx.connect(this, SIGNAL(search(QString)), SLOT(search(QString)));
     mx.connect(this, SIGNAL(caseSensitiveChanged(bool)), SLOT(setSearchCaseSensitive(bool)));
+    mx.connect(this, SIGNAL(enterPressed()), SLOT(switchToEntryEdit()));
     mx.connect(this, SIGNAL(copyPressed()), SLOT(copyPassword()));
     mx.connect(this, SIGNAL(downPressed()), SLOT(setFocus()));
 }
